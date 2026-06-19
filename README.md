@@ -1,58 +1,143 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <h1 align="center">Attendance & Leave Management</h1>
+  <p align="center">A lightweight employee attendance and leave-management web application built with Laravel + Vue 3.</p>
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+An API-driven system for managing employee attendance (check-in/check-out, late detection) and leave requests with an approval workflow. Role-based dashboards serve HR, managers, and employees.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** PHP 8.3, Laravel 13, Sanctum API tokens, SQLite
+- **Frontend:** Vue 3 SPA, Vue Router, Tailwind CSS v4, Vite
+- **Deploy:** Cloudflare Pages via Wrangler
 
-## Learning Laravel
+## Key Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Role-based access** — hr, manager, employee roles with scoped views
+- **Attendance tracking** — check-in/check-out with automatic late detection
+- **Leave management** — submit, approve, and reject leave requests
+- **Dashboards** — role-specific summaries (pending approvals, team attendance, personal stats)
+- **API-first** — all features exposed via REST API consumed by the SPA frontend
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Screenshots
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+<p align="center">
+  <img src="screenshots/login.png" alt="Login" width="45%">
+  <img src="screenshots/dashboard-hr.png" alt="HR Dashboard" width="45%">
+</p>
+<p align="center">
+  <img src="screenshots/dashboard-employee.png" alt="Employee Dashboard" width="45%">
+  <img src="screenshots/attendance.png" alt="Attendance" width="45%">
+</p>
+<p align="center">
+  <img src="screenshots/leave-requests.png" alt="Leave Requests" width="45%">
+  <img src="screenshots/users.png" alt="User Management" width="45%">
+</p>
 
-## Agentic Development
+> **To generate screenshots:** Start the dev server (`composer run dev`), then run:
+> ```bash
+> node tools/screenshot-dashboard.js
+> ```
+> This captures all six pages above and saves them to `screenshots/`.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Quick Start
+
+### 1. Clone & install
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <repo-url> project
+cd project
+composer install
+cp .env.example .env
+php artisan key:generate
+npm install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Database
 
-## Contributing
+```bash
+touch database/database.sqlite
+php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Run dev server
 
-## Code of Conduct
+```bash
+composer run dev
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The app will be available at `http://localhost:8000`.
 
-## Security Vulnerabilities
+### Demo Credentials (from seeder)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+| Role     | Email                       | Password   |
+|----------|-----------------------------|------------|
+| HR       | hr@team14.com               | password   |
+| Manager  | manager@team14.com          | password   |
+| Employee | alice.johnson@team14.com    | password   |
+
+## API Routes
+
+| Method   | Endpoint                    | Access       | Description              |
+|----------|-----------------------------|--------------|--------------------------|
+| POST     | `/api/register`             | Public       | Register new user        |
+| POST     | `/api/login`                | Public       | Login, get token         |
+| GET      | `/api/user`                 | Authenticated| Current user info        |
+| POST     | `/api/logout`               | Authenticated| Logout                   |
+| GET      | `/api/dashboard`            | Authenticated| Role-based dashboard     |
+| GET      | `/api/attendance`           | Authenticated| All attendance records   |
+| GET      | `/api/attendance/my`        | Authenticated| Own attendance records   |
+| GET      | `/api/attendance/today`     | Authenticated| Today's status           |
+| POST     | `/api/attendance/check-in`  | Authenticated| Clock in                 |
+| POST     | `/api/attendance/check-out` | Authenticated| Clock out                |
+| GET      | `/api/leave-requests`       | Authenticated| All leave requests       |
+| GET      | `/api/leave-requests/my`    | Authenticated| Own leave requests       |
+| POST     | `/api/leave-requests`       | Authenticated| Create leave request     |
+| PUT      | `/api/leave-requests/{id}`  | Authenticated| Approve/reject (HR/Mgr)  |
+| DELETE   | `/api/leave-requests/{id}`  | Authenticated| Delete leave request     |
+| GET      | `/api/users`                | HR/Manager   | List all users           |
+| PUT      | `/api/users/{id}/role`      | HR/Manager   | Update user role         |
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+Assets are built to `public/build` and deployed to Cloudflare Pages via Wrangler (`wrangler.jsonc`).
+
+## Project Structure
+
+```
+├── app/
+│   ├── Http/Controllers/Api/   # Auth, Attendance, Dashboard, LeaveRequest, User
+│   └── Models/                 # User, AttendanceRecord, LeaveRequest
+├── database/
+│   └── migrations/             # Schema (unique constraint on user+date attendance)
+├── resources/
+│   ├── js/                     # Vue 3 SPA (pages, components, router, mock API)
+│   └── views/                  # Blade entry point
+├── routes/
+│   ├── api.php                 # REST API routes
+│   └── web.php                 # Catch-all for SPA
+├── docs/                       # Developer guide & project presentation
+├── slides/                     # PechaKucha presentation
+├── tools/                      # Screenshot & theme scripts
+└── wrangler.jsonc              # Cloudflare Pages config
+```
+
+## Commands
+
+```bash
+composer run dev          # Coordinated dev (Laravel + queue + Vite)
+composer test             # Run PHPUnit tests
+php artisan migrate:fresh --seed   # Reset DB and reseed demo data
+npm run build             # Production build
+npm run deploy            # Build + deploy to Cloudflare
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT
