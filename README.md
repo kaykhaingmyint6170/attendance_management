@@ -21,27 +21,6 @@ An API-driven system for managing employee attendance (check-in/check-out, late 
 - **Dashboards** — role-specific summaries (pending approvals, team attendance, personal stats)
 - **API-first** — all features exposed via REST API consumed by the SPA frontend
 
-## Screenshots
-
-<p align="center">
-  <img src="screenshots/login.png" alt="Login" width="45%">
-  <img src="screenshots/dashboard-hr.png" alt="HR Dashboard" width="45%">
-</p>
-<p align="center">
-  <img src="screenshots/dashboard-employee.png" alt="Employee Dashboard" width="45%">
-  <img src="screenshots/attendance.png" alt="Attendance" width="45%">
-</p>
-<p align="center">
-  <img src="screenshots/leave-requests.png" alt="Leave Requests" width="45%">
-  <img src="screenshots/users.png" alt="User Management" width="45%">
-</p>
-
-> **To generate screenshots:** Start the dev server (`composer run dev`), then run:
-> ```bash
-> node tools/screenshot-dashboard.js
-> ```
-> This captures all six pages above and saves them to `screenshots/`.
-
 ## Quick Start
 
 ### 1. Clone & install
