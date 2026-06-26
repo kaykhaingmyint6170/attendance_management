@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && node generate-html.cjs && printf '/assets/*  /assets/:splat  200\n/*         /index.html     200\n' > public/build/_redirects",
+    "build": "vite build && node generate-html.cjs && printf '/build/*  /build/:splat  200\n/*         /index.html     200\n' > public/build/_redirects",
     "dev": "vite",
     "deploy": "npm run build && wrangler deploy",
     "preview": "npm run build && wrangler dev"
