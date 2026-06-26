@@ -4,8 +4,8 @@
         <div class="pg-header"><div><h1 class="pg-title">All Attendance Records</h1><p class="pg-sub">View and filter all employee attendance</p></div></div>
         <div class="card filter-card">
             <div class="filter-row">
-                <div class="filter-field"><label>From</label><input v-model="filters.date_from" type="date" /></div>
-                <div class="filter-field"><label>To</label><input v-model="filters.date_to" type="date" /></div>
+                <div class="filter-field"><label>From</label><DatePicker v-model="filters.date_from" placeholder="Select date" /></div>
+                <div class="filter-field"><label>To</label><DatePicker v-model="filters.date_to" placeholder="Select date" /></div>
                 <div class="filter-field"><label>Employee</label><select v-model="filters.user_id"><option value="">All Employees</option><option v-for="u in users" :key="u.id" :value="u.id">{{ u.name }}</option></select></div>
                 <button @click="applyFilters" class="btn btn-primary">Filter</button>
                 <button @click="resetFilters" class="btn btn-ghost">Reset</button>
@@ -43,8 +43,10 @@
 <script>
 import { ref, reactive, onMounted } from 'vue';
 import api from '../../composables/useApi';
+import DatePicker from '../../components/DatePicker.vue';
 export default {
     name: 'AttendanceRecords',
+    components: { DatePicker },
     setup() {
         const loading = ref(true); const records = ref([]); const users = ref([]);
         const pagination = ref({ current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null });
@@ -66,12 +68,13 @@ export default {
 .pg-title { font-size: 1.625rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
 .pg-sub { font-size: 0.8125rem; color: #6b7280; margin-top: 3px; }
 .card { background: #fff; border-radius: 20px; border: 1px solid #f1f5f9; box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 8px 24px -12px rgba(0,0,0,0.06); overflow: hidden; position: relative; z-index: 1; }
-.filter-card { animation: fadeInUp 0.5s ease-out 0.1s both; padding: 1.25rem 1.5rem; }
+.filter-card { animation: fadeInUp 0.5s ease-out 0.1s both; padding: 1.25rem 1.5rem; overflow: visible; z-index: 10; }
 .filter-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
 .filter-field { display: flex; flex-direction: column; gap: 0.25rem; }
 .filter-field label { font-size: 0.6875rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; }
 .filter-field input, .filter-field select { height: 40px; padding: 0 12px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 0.8125rem; color: #374151; background: #f9fafb; outline: none; transition: all 0.15s; }
 .filter-field input:focus, .filter-field select:focus { border-color: #5EEAD4; box-shadow: 0 0 0 3px rgba(13,148,136,0.08); background: #fff; }
+.filter-field .dp-input { min-width: 170px; }
 .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0 18px; height: 40px; border: none; border-radius: 12px; font-size: 0.8125rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
 .btn-primary { background: linear-gradient(135deg, #0D9488, #0F766E); color: #fff; box-shadow: 0 2px 10px rgba(13,148,136,0.25); }
 .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,148,136,0.35); }
