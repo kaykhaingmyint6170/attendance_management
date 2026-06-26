@@ -4,6 +4,8 @@
 @source "../js/**/*.vue";
 @source "../js/**/*.js";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Primary (Teal) */
   --color-primary: #0D9488;
@@ -55,8 +57,193 @@
   background-size: 40px 40px;
 }
 
+/* Dark mode background patterns */
+.dark .bg-dots {
+  background-image: radial-gradient(rgb(94 234 212 / 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.dark .bg-grid {
+  background-image:
+    linear-gradient(rgb(94 234 212 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(94 234 212 / 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 /* Scrollbar */
 .sidebar-scroll::-webkit-scrollbar { width: 4px; }
 .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
 .sidebar-scroll::-webkit-scrollbar-thumb { background: rgb(0 0 0 / 0.15); border-radius: 4px; }
 .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: rgb(0 0 0 / 0.25); }
+
+.dark .sidebar-scroll::-webkit-scrollbar-thumb { background: rgb(255 255 255 / 0.15); }
+.dark .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: rgb(255 255 255 / 0.25); }
+
+/* ═══ Shared dark-mode overrides for scoped component CSS ═══ */
+.dark .card,
+.dark .form-card,
+.dark .modal-card,
+.dark .quick-access {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .time-row,
+.dark .filter-card {
+  background: #0f172a;
+}
+
+.dark .table-wrap thead th {
+  background: #0f172a;
+  color: #94a3b8;
+}
+
+.dark .table-wrap tbody td {
+  border-color: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark .table-wrap tbody tr:hover {
+  background: #0f172a;
+}
+
+.dark .empty-state,
+.dark .empty-card > p,
+.dark .loader-text,
+.dark .pg-sub,
+.dark .ch-date,
+.dark .dash-date {
+  color: #64748b;
+}
+
+.dark .empty-illustration-sm,
+.dark .empty-circle,
+.dark .empty-icon {
+  background: #334155;
+}
+
+.dark .empty-illustration-sm svg,
+.dark .empty-circle svg,
+.dark .empty-icon svg {
+  color: #64748b;
+}
+
+.dark .pager {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .pager-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark .pager-btn:hover:not(:disabled) {
+  background: #334155;
+  border-color: #475569;
+}
+
+.dark .modal-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.dark .modal-textarea,
+.dark .filter-field input,
+.dark .filter-field select,
+.dark .field input,
+.dark .field select,
+.dark .field textarea,
+.dark .input-wrap input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .modal-textarea:focus,
+.dark .filter-field input:focus,
+.dark .filter-field select:focus,
+.dark .field input:focus,
+.dark .field select:focus,
+.dark .field textarea:focus,
+.dark .input-wrap input:focus {
+  background: #0f172a;
+  border-color: #5EEAD4;
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.1);
+}
+
+.dark .input-wrap input::placeholder,
+.dark .field input::placeholder,
+.dark .field textarea::placeholder {
+  color: #475569;
+}
+
+.dark .toggle-pw { color: #64748b; }
+.dark .toggle-pw:hover { color: #94a3b8; background: #334155; }
+
+.dark .form-panel { background: #0f172a; }
+.dark .form-panel::before { background: rgba(13, 148, 136, 0.06); }
+
+.dark .mobile-header h2,
+.dark .desktop-header h2,
+.dark .form-header-row h3,
+.dark .modal-header h3 { color: #f1f5f9; }
+
+.dark .mobile-header p,
+.dark .desktop-header p,
+.dark .modal-header p { color: #64748b; }
+
+.dark .field label { color: #94a3b8; }
+
+.dark .divider::before,
+.dark .divider::after { background: #334155; }
+
+.dark .footer-text { color: #64748b; }
+.dark .qa-title { color: #64748b; }
+.dark .qa-item { color: #94a3b8; }
+
+.dark .error-box,
+.dark .error-msg {
+  background: rgba(225, 29, 72, 0.1);
+  border-color: rgba(225, 29, 72, 0.2);
+}
+
+.dark .msg-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.dark .msg-error {
+  background: rgba(225, 29, 72, 0.1);
+  border-color: rgba(225, 29, 72, 0.2);
+}
+
+.dark .btn-ghost {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+.dark .btn-ghost:hover { background: #334155; }
+
+.dark .btn-ghost-modal {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+.dark .btn-ghost-modal:hover { background: #334155; }
+
+.dark .badge-present,
+.dark .badge-lg-present,
+.dark .badge-approved { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+.dark .badge-late,
+.dark .badge-lg-late,
+.dark .badge-pending { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+.dark .badge-absent,
+.dark .badge-lg-absent,
+.dark .badge-rejected { background: rgba(225, 29, 72, 0.15); color: #fb7185; }
+
+.dark .btn-success { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.dark .btn-success:hover { background: rgba(16, 185, 129, 0.25); }
+.dark .btn-danger { background: rgba(225, 29, 72, 0.15); color: #fb7185; }
+.dark .btn-danger:hover { background: rgba(225, 29, 72, 0.25); }

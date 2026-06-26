@@ -90,7 +90,7 @@ export default {
 </script>
 
 <style scoped>
-.login-page { display: flex; min-height: 100vh; }
+.login-page { display: flex; min-height: 100vh; overflow: hidden; }
 .illustration-panel { display: none; position: relative; flex: 1; background: linear-gradient(155deg, #0F4C48 0%, #0B3835 25%, #0F4C48 55%, #0D3D3A 100%); overflow: hidden; align-items: center; justify-content: center; }
 @media (min-width: 1024px) { .illustration-panel { display: flex; } }
 .blobs-layer { position: absolute; inset: 0; overflow: hidden; }
@@ -192,4 +192,26 @@ form { display: flex; flex-direction: column; gap: 0.875rem; }
 .shake-enter-active { animation: shakeIn 0.4s ease-out; }
 .shake-leave-active { animation: shakeIn 0.3s ease-in reverse; }
 @keyframes shakeIn { 0% { opacity: 0; transform: translateX(-8px); } 20% { transform: translateX(6px); } 40% { transform: translateX(-4px); } 60% { transform: translateX(2px); } 100% { opacity: 1; transform: translateX(0); } }
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+:global(.dark) .form-panel { background: #0f172a; }
+:global(.dark) .form-panel::before { background: rgba(13, 148, 136, 0.06); }
+:global(.dark) .form-card { background: #1e293b; border-color: #334155; }
+:global(.dark) .mobile-header h2,
+:global(.dark) .desktop-header h2 { color: #f1f5f9; }
+:global(.dark) .mobile-header p,
+:global(.dark) .desktop-header p { color: #64748b; }
+:global(.dark) .field label { color: #94a3b8; }
+:global(.dark) .input-wrap input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+:global(.dark) .input-wrap input::placeholder { color: #475569; }
+:global(.dark) .input-wrap input:focus { background: #0f172a; border-color: #5EEAD4; box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.1); }
+:global(.dark) .input-icon { color: #64748b; }
+:global(.dark) .input-wrap:focus-within .input-icon { color: #5EEAD4; }
+:global(.dark) .toggle-pw { color: #64748b; }
+:global(.dark) .toggle-pw:hover { color: #94a3b8; background: #334155; }
+:global(.dark) .error-box { background: rgba(225, 29, 72, 0.1); border-color: rgba(225, 29, 72, 0.2); }
+:global(.dark) .divider::before,
+:global(.dark) .divider::after { background: #334155; }
+:global(.dark) .divider span { color: #64748b; }
+:global(.dark) .footer-text { color: #64748b; }
 </style>

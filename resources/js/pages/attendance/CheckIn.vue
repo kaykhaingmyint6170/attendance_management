@@ -155,4 +155,21 @@ export default {
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 70% { transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+:global(.dark) .ch-title { color: #f1f5f9; }
+:global(.dark) .ch-date { color: #64748b; }
+:global(.dark) .card { background: #1e293b; border-color: #334155; }
+:global(.dark) .card-label { color: #64748b; }
+:global(.dark) .time-row { background: #0f172a; }
+:global(.dark) .time-value { color: #f1f5f9; }
+:global(.dark) .time-label { color: #64748b; }
+:global(.dark) .status-badge-row > span:first-child { color: #94a3b8; }
+:global(.dark) .empty-circle { background: #334155; }
+:global(.dark) .empty-circle svg { color: #64748b; }
+:global(.dark) .empty-state > p { color: #94a3b8; }
+:global(.dark) .empty-sub { color: #64748b !important; }
+:global(.dark) .done-state p { color: #cbd5e1; }
+:global(.dark) .loader-ring { border-color: rgba(13, 148, 136, 0.2); border-top-color: #0D9488; }
+:global(.dark) .loader-text { color: #64748b; }
 </style>

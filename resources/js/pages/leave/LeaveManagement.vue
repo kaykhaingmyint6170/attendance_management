@@ -153,4 +153,16 @@ export default {
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+:global(.dark) .pg-title { color: #f1f5f9; }
+:global(.dark) .card { background: #1e293b; border-color: #334155; }
+:global(.dark) .notes-hint { color: #64748b; }
+:global(.dark) .empty-card > p { color: #94a3b8; }
+:global(.dark) .modal-header h3 { color: #f1f5f9; }
+:global(.dark) .modal-header p { color: #64748b; }
+:global(.dark) .modal-card { background: #1e293b; }
+:global(.dark) .pager-info { color: #64748b; }
+:global(.dark) .loader-ring { border-color: rgba(13, 148, 136, 0.2); border-top-color: #0D9488; }
+:global(.dark) .loader-text { color: #64748b; }
 </style>

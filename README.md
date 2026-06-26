@@ -12,6 +12,7 @@ An API-driven system for managing employee attendance (check-in/check-out, late 
 - **Backend:** PHP 8.3, Laravel 13, Sanctum API tokens, SQLite
 - **Frontend:** Vue 3 SPA, Vue Router, Tailwind CSS v4, Vite
 - **Deploy:** Cloudflare Pages via Wrangler
+- **Live Demo:** [https://attendance-8eb.pages.dev](https://attendance-8eb.pages.dev)
 
 ## Key Features
 
@@ -116,6 +117,32 @@ php artisan migrate:fresh --seed   # Reset DB and reseed demo data
 npm run build             # Production build
 npm run deploy            # Build + deploy to Cloudflare
 ```
+
+## Screenshots
+
+### Login
+![Login](screenshots/login.png)
+
+### Register
+![Register](screenshots/register.png)
+
+### Dashboard (HR view)
+![Dashboard](screenshots/dashboard.png)
+
+### Check In / Out
+![Check In/Out](screenshots/check-in.png)
+
+### My Attendance
+![My Attendance](screenshots/my-attendance.png)
+
+### My Leaves
+![My Leaves](screenshots/my-leaves.png)
+
+### All Records
+![All Records](screenshots/all-records.png)
+
+### All Leaves
+![All Leaves](screenshots/all-leaves.png)
 
 ## License
 
