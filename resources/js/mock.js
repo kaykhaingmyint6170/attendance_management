@@ -47,7 +47,7 @@ function mkErr(status, msg) {
 }
 
 // ═══ Route handler ────────────────────────────────────────
-function handle(method, path, body) {
+function handle(method, path, body, params) {
     const token = localStorage.getItem('token');
     const user = token ? Object.values(users).find(u => u.token === token) : null;
 
@@ -122,7 +122,11 @@ function handle(method, path, body) {
         return { data: { data: attendance.filter(a => a.user_id === cur.id), current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/attendance' && method === 'get') {
-        return { data: { data: attendance, current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
+        let filtered = [...attendance];
+        if (params.date_from) filtered = filtered.filter(a => a.date >= params.date_from);
+        if (params.date_to)   filtered = filtered.filter(a => a.date <= params.date_to);
+        if (params.user_id)   filtered = filtered.filter(a => a.user_id === parseInt(params.user_id));
+        return { data: { data: filtered, current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
 
     // ── Leave Requests ──
@@ -131,7 +135,9 @@ function handle(method, path, body) {
         return { data: { data: leaves.filter(l => l.user_id === cur.id), current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/leave-requests' && method === 'get') {
-        return { data: { data: leaves, current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
+        let filtered = [...leaves];
+        if (params.status) filtered = filtered.filter(l => l.status === params.status);
+        return { data: { data: filtered, current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/leave-requests' && method === 'post') {
         const cur = user || users['alice.johnson@team14.com'];
@@ -179,10 +185,14 @@ function isLocal() {
 }
 
 function mockRequest(method, url, data) {
-    const cleaned = url.replace(/^\/api/, '').replace(/\?.*$/, '');
+    const noApi = url.replace(/^\/api/, '');
+    const qIdx = noApi.indexOf('?');
+    const cleaned = qIdx >= 0 ? noApi.slice(0, qIdx) : noApi;
+    const params = {};
+    if (qIdx >= 0) { new URLSearchParams(noApi.slice(qIdx + 1)).forEach((v, k) => { params[k] = v; }); }
     const body = typeof data === 'string' ? JSON.parse(data) : (data || {});
     try {
-        const result = handle(method, cleaned, body);
+        const result = handle(method, cleaned, body, params);
         return Promise.resolve(result);
     } catch (e) {
         return Promise.reject(e);
