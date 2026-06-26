@@ -9,8 +9,9 @@
 
 An API-driven system for managing employee attendance (check-in/check-out, late detection) and leave requests with an approval workflow. Role-based dashboards serve HR, managers, and employees.
 
-- **Backend:** PHP 8.3, Laravel 13, Sanctum API tokens, SQLite
+- **Backend:** PHP 8.3, Laravel 13, Sanctum API tokens, SQLite (local dev)
 - **Frontend:** Vue 3 SPA, Vue Router, Tailwind CSS v4, Vite
+- **Live Demo Backend:** In-memory mock API (`mock.js`) — no server required
 - **Deploy:** Cloudflare Pages via Wrangler
 - **Live Demo:** [https://attendance-8eb.pages.dev](https://attendance-8eb.pages.dev)
 
