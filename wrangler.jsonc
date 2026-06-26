@@ -1,11 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "team-14-kkm",
+  "name": "attendance",
   "compatibility_date": "2026-06-17",
-  "assets": {
-    "directory": "./public/build",
-    "not_found_handling": "single-page-application"
-  },
+  "pages_build_output_dir": "./public/build",
   "compatibility_flags": [
     "nodejs_compat"
   ]

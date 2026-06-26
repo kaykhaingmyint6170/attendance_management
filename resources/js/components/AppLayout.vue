@@ -1,7 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gray-50 bg-grid">
+    <div class="min-h-screen bg-gray-50 dark:bg-gray-950 bg-grid transition-colors duration-300">
         <!-- ═══ TOP NAVBAR ═══ -->
-        <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200/60 shadow-sm">
+        <nav class="sticky top-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/60 dark:border-gray-700/60 shadow-sm transition-colors duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <!-- Brand -->
@@ -11,7 +11,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <h1 class="text-base font-bold text-gray-900 hidden sm:block">Employee Mgmt</h1>
+                        <h1 class="text-base font-bold text-gray-900 dark:text-gray-100 hidden sm:block">Employee Mgmt</h1>
                     </div>
 
                     <!-- Desktop Nav Links -->
@@ -48,9 +48,9 @@
                     <!-- Right side -->
                     <div class="flex items-center gap-3">
                         <!-- Live indicator -->
-                        <div class="hidden sm:flex items-center gap-1.5 bg-gray-100 px-2.5 py-1 rounded-full">
+                        <div class="hidden sm:flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 px-2.5 py-1 rounded-full transition-colors duration-300">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            <span class="text-[11px] font-medium text-gray-500">Live</span>
+                            <span class="text-[11px] font-medium text-gray-500 dark:text-gray-400">Live</span>
                         </div>
 
                         <!-- User + Role -->
@@ -59,14 +59,17 @@
                                 {{ userName.charAt(0).toUpperCase() }}
                             </div>
                             <div class="hidden lg:block">
-                                <p class="text-sm font-medium text-gray-900 leading-tight">{{ userName }}</p>
+                                <p class="text-sm font-medium text-gray-900 dark:text-gray-100 leading-tight">{{ userName }}</p>
                                 <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium" :class="roleBadgeClass">{{ userRole }}</span>
                             </div>
                         </div>
 
+                        <!-- Theme Toggle -->
+                        <ThemeToggle />
+
                         <!-- Logout -->
                         <button @click="logout"
-                            class="hidden sm:flex items-center gap-1.5 text-sm text-gray-500 hover:text-red-500 hover:bg-red-50 px-3 py-1.5 rounded-lg transition-all duration-150"
+                            class="hidden sm:flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 px-3 py-1.5 rounded-lg transition-all duration-150"
                             title="Logout">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                             <span class="hidden lg:inline">Logout</span>
@@ -74,7 +77,7 @@
 
                         <!-- Mobile menu toggle -->
                         <button @click="mobileOpen = !mobileOpen"
-                            class="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
+                            class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                             <svg v-if="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                             <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
@@ -84,14 +87,14 @@
 
             <!-- Mobile dropdown -->
             <transition name="slide-down">
-                <div v-if="mobileOpen" class="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-lg">
+                <div v-if="mobileOpen" class="md:hidden border-t border-gray-100 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg transition-colors duration-300">
                     <div class="px-4 py-3 space-y-1">
                         <router-link v-for="item in navItems" :key="item.to" :to="item.to" @click="mobileOpen = false"
                             class="mobile-nav-link" :class="{ active: isActive(item.to) }">
                             {{ item.label }}
                         </router-link>
                         <template v-if="userRole !== 'employee'">
-                            <div class="border-t border-gray-100 my-1" />
+                            <div class="border-t border-gray-100 dark:border-gray-700 my-1" />
                             <router-link to="/attendance" @click="mobileOpen = false"
                                 class="mobile-nav-link" :class="{ active: isActiveExact('/attendance') }">
                                 All Records
@@ -101,17 +104,17 @@
                                 All Leaves
                             </router-link>
                         </template>
-                        <div class="border-t border-gray-100 my-1 pt-2 flex items-center justify-between">
+                        <div class="border-t border-gray-100 dark:border-gray-700 my-1 pt-2 flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center text-white text-xs font-bold">
                                     {{ userName.charAt(0).toUpperCase() }}
                                 </div>
                                 <div>
-                                    <p class="text-sm font-medium text-gray-900">{{ userName }}</p>
+                                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ userName }}</p>
                                     <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium" :class="roleBadgeClass">{{ userRole }}</span>
                                 </div>
                             </div>
-                            <button @click="logout" class="p-2 rounded-lg text-gray-500 hover:text-red-500 hover:bg-red-50 transition-colors">
+                            <button @click="logout" class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                             </button>
                         </div>
@@ -124,8 +127,8 @@
         <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
             <div v-if="loading" class="flex justify-center py-24">
                 <div class="flex flex-col items-center gap-3">
-                    <div class="w-10 h-10 border-[3px] border-primary-100 border-t-primary rounded-full animate-spin" />
-                    <span class="text-sm text-gray-400">Loading...</span>
+                    <div class="w-10 h-10 border-[3px] border-primary-100 dark:border-primary-900 border-t-primary rounded-full animate-spin" />
+                    <span class="text-sm text-gray-400 dark:text-gray-500">Loading...</span>
                 </div>
             </div>
             <router-view v-else @loading="setLoading" />
@@ -137,9 +140,11 @@
 import { ref, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import api from '../composables/useApi';
+import ThemeToggle from './ThemeToggle.vue';
 
 export default {
     name: 'AppLayout',
+    components: { ThemeToggle },
     setup() {
         const router = useRouter();
         const route = useRoute();
@@ -208,6 +213,11 @@ export default {
 .nav-link:hover { background: #f3f4f6; color: #111827; }
 .nav-link.active { background: #F0FDFA; color: #0D9488; font-weight: 600; }
 
+/* Dark nav links */
+:global(.dark) .nav-link { color: #94a3b8; }
+:global(.dark) .nav-link:hover { background: #1e293b; color: #e2e8f0; }
+:global(.dark) .nav-link.active { background: rgba(13, 148, 136, 0.15); color: #5EEAD4; }
+
 /* Mobile nav link */
 .mobile-nav-link {
     display: flex;
@@ -222,6 +232,11 @@ export default {
 }
 .mobile-nav-link:hover { background: #f3f4f6; }
 .mobile-nav-link.active { background: #F0FDFA; color: #0D9488; font-weight: 600; }
+
+/* Dark mobile nav links */
+:global(.dark) .mobile-nav-link { color: #cbd5e1; }
+:global(.dark) .mobile-nav-link:hover { background: #1e293b; }
+:global(.dark) .mobile-nav-link.active { background: rgba(13, 148, 136, 0.15); color: #5EEAD4; }
 
 /* Slide-down transition for mobile menu */
 .slide-down-enter-active { transition: all 0.25s ease-out; }

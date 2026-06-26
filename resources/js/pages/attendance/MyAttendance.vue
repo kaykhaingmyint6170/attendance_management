@@ -87,4 +87,13 @@ export default {
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══ DARK MODE OVERRIDES ═══ */
+:global(.dark) .pg-title { color: #f1f5f9; }
+:global(.dark) .pg-sub { color: #64748b; }
+:global(.dark) .card { background: #1e293b; border-color: #334155; }
+:global(.dark) .empty-card > p { color: #94a3b8; }
+:global(.dark) .pager-info { color: #64748b; }
+:global(.dark) .loader-ring { border-color: rgba(13, 148, 136, 0.2); border-top-color: #0D9488; }
+:global(.dark) .loader-text { color: #64748b; }
 </style>
