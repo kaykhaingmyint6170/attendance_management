@@ -54,7 +54,7 @@ An API-driven system for managing employee attendance (check-in/check-out, late 
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/kaykhaingmyint6170/attendance_management project
+git clone https://github.com/kaykhaingmyint6170/attendance_management
 cd project
 composer install
 cp .env.example .env
