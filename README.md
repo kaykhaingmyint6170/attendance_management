@@ -55,7 +55,7 @@ An API-driven system for managing employee attendance (check-in/check-out, late 
 
 ```bash
 git clone https://github.com/kaykhaingmyint6170/attendance_management
-cd project
+cd attendance_management
 composer install
 cp .env.example .env
 php artisan key:generate
