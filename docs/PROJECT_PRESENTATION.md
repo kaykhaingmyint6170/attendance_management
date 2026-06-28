@@ -56,9 +56,9 @@ composer run dev   # recommended: coordinated dev (Laravel + Vite)
 
 Demo credentials (from seeder)
 -----------------------------
-- HR: hr@team14.com / password
-- Manager: manager@team14.com / password
-- Employee: alice.johnson@team14.com / password
+- HR: hr@company.com / password
+- Manager: manager@company.com / password
+- Employee: alice.johnson@company.com / password
 
 Important files & where to look
 -------------------------------

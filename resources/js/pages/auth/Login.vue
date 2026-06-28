@@ -185,9 +185,9 @@
                 <div class="quick-access">
                     <p class="qa-title">Quick Access</p>
                     <div class="qa-items">
-                        <div class="qa-item"><span class="qa-dot qa-hr" />HR: hr@team14.com / password</div>
-                        <div class="qa-item"><span class="qa-dot qa-mgr" />Mgr: manager@team14.com / password</div>
-                        <div class="qa-item"><span class="qa-dot qa-emp" />Emp: alice.johnson@team14.com / password</div>
+                        <div class="qa-item"><span class="qa-dot qa-hr" />HR: hr@company.com / password</div>
+                        <div class="qa-item"><span class="qa-dot qa-mgr" />Mgr: manager@company.com / password</div>
+                        <div class="qa-item"><span class="qa-dot qa-emp" />Emp: alice.johnson@company.com / password</div>
                     </div>
                 </div>
             </div>

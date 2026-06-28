@@ -81,9 +81,9 @@ The app will be available at `http://localhost:8000`.
 
 | Role     | Email                       | Password   |
 |----------|-----------------------------|------------|
-| HR       | hr@team14.com               | password   |
-| Manager  | manager@team14.com          | password   |
-| Employee | alice.johnson@team14.com    | password   |
+| HR       | hr@company.com               | password   |
+| Manager  | manager@company.com          | password   |
+| Employee | alice.johnson@company.com    | password   |
 
 ## API Routes
 

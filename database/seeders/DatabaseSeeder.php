@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         // Create HR user
         $hr = User::factory()->create([
             'name' => 'HR Manager',
-            'email' => 'hr@team14.com',
+            'email' => 'hr@company.com',
             'password' => bcrypt('password'),
             'role' => 'hr',
         ]);
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // Create Manager
         $manager = User::factory()->create([
             'name' => 'Team Manager',
-            'email' => 'manager@team14.com',
+            'email' => 'manager@company.com',
             'password' => bcrypt('password'),
             'role' => 'manager',
         ]);
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         foreach ($employeeNames as $name) {
             $employees[] = User::factory()->create([
                 'name' => $name,
-                'email' => strtolower(str_replace(' ', '.', $name)) . '@team14.com',
+                'email' => strtolower(str_replace(' ', '.', $name)) . '@company.com',
                 'password' => bcrypt('password'),
                 'role' => 'employee',
             ]);
@@ -109,8 +109,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->command->info('Database seeded successfully!');
-        $this->command->info('HR Login: hr@team14.com / password');
-        $this->command->info('Manager Login: manager@team14.com / password');
-        $this->command->info('Employee Login: alice.johnson@team14.com / password');
+        $this->command->info('HR Login: hr@company.com / password');
+        $this->command->info('Manager Login: manager@company.com / password');
+        $this->command->info('Employee Login: alice.johnson@company.com / password');
     }
 }

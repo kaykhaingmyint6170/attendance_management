@@ -3,9 +3,9 @@
 
 // ═══ Mock database ────────────────────────────────────────
 const users = {
-    'hr@team14.com':        { id: 1, name: 'Sarah Chen',    email: 'hr@team14.com',        role: 'hr',       token: 'mock-token-hr-001' },
-    'manager@team14.com':   { id: 2, name: 'Mike Torres',   email: 'manager@team14.com',   role: 'manager',  token: 'mock-token-mgr-001' },
-    'alice.johnson@team14.com': { id: 3, name: 'Alice Johnson', email: 'alice.johnson@team14.com', role: 'employee', token: 'mock-token-emp-001' },
+    'hr@company.com':        { id: 1, name: 'Sarah Chen',    email: 'hr@company.com',        role: 'hr',       token: 'mock-token-hr-001' },
+    'manager@company.com':   { id: 2, name: 'Mike Torres',   email: 'manager@company.com',   role: 'manager',  token: 'mock-token-mgr-001' },
+    'alice.johnson@company.com': { id: 3, name: 'Alice Johnson', email: 'alice.johnson@company.com', role: 'employee', token: 'mock-token-emp-001' },
 };
 
 let leaveId = 100;
@@ -72,7 +72,7 @@ function handle(method, path, body, params) {
 
     // ── Dashboard ──
     if (path === '/dashboard' && method === 'get') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         const td = today();
         const todayAtt = attendance.filter(a => a.date === td);
         const present = todayAtt.filter(a => a.status === 'present' || a.status === 'late').length;
@@ -98,27 +98,27 @@ function handle(method, path, body, params) {
 
     // ── Attendance ──
     if (path === '/attendance/today' && method === 'get') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         const td = today();
         const rec = attendance.find(a => a.user_id === cur.id && a.date === td);
         return { data: { record: rec || null, can_check_in: !(rec && rec.check_in_at), can_check_out: !!(rec && rec.check_in_at && !rec.check_out_at) } };
     }
     if (path === '/attendance/check-in' && method === 'post') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         const now = new Date();
         const rec = mkAtt(cur.id, today(), now.getHours() >= 9 ? 'late' : 'present', now.toISOString(), null);
         attendance.push(rec);
         return { data: rec };
     }
     if (path === '/attendance/check-out' && method === 'post') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         const td = today();
         const rec = attendance.find(a => a.user_id === cur.id && a.date === td);
         if (rec) rec.check_out_at = new Date().toISOString();
         return { data: rec };
     }
     if (path === '/attendance/my' && method === 'get') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         return { data: { data: attendance.filter(a => a.user_id === cur.id), current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/attendance' && method === 'get') {
@@ -131,7 +131,7 @@ function handle(method, path, body, params) {
 
     // ── Leave Requests ──
     if (path === '/leave-requests/my' && method === 'get') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         return { data: { data: leaves.filter(l => l.user_id === cur.id), current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/leave-requests' && method === 'get') {
@@ -140,7 +140,7 @@ function handle(method, path, body, params) {
         return { data: { data: filtered, current_page: 1, last_page: 1, next_page_url: null, prev_page_url: null } };
     }
     if (path === '/leave-requests' && method === 'post') {
-        const cur = user || users['alice.johnson@team14.com'];
+        const cur = user || users['alice.johnson@company.com'];
         const lr = mkLeave(cur.id, body.type, body.start_date, body.end_date, body.reason, 'pending');
         leaves.unshift(lr);
         return { data: lr };
