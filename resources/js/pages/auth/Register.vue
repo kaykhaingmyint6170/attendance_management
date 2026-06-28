@@ -18,13 +18,25 @@
                 <div class="float-card card-team-reg"><div class="team-grid"><div class="tg tg-1">A</div><div class="tg tg-2">M</div><div class="tg tg-3">K</div><div class="tg tg-4">S</div><div class="tg tg-5">R</div><div class="tg tg-plus">+12</div></div><span class="team-label">Join your team</span></div>
             </div>
             <div class="hero">
-                <div class="hero-badge"><span class="pulse" />Team-14 KKM</div>
-                <h1 class="hero-title">Join Your<br/><span class="hero-grad">Team</span> Today</h1>
-                <p class="hero-desc">Create your account and start tracking attendance in minutes.</p>
+                <h1 class="hero-title">
+                    Attendance<br/>Management
+                </h1>
+                <p class="hero-desc">
+                    Track time, manage leaves, and stay connected — all in one place.
+                </p>
                 <div class="hero-pills">
-                    <span class="pill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Quick sign up</span>
-                    <span class="pill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Secure data</span>
-                    <span class="pill"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Team collaboration</span>
+                    <span class="pill">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Real-time tracking
+                    </span>
+                    <span class="pill">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        One-click check-in
+                    </span>
+                    <span class="pill">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Easy leave requests
+                    </span>
                 </div>
             </div>
             <div class="wave-wrap"><svg class="wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none"><path class="wave-path" d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" /></svg></div>
@@ -33,9 +45,9 @@
             <div class="form-wrapper">
                 <div class="mobile-header">
                     <div class="logo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg></div>
-                    <h2>Create Account</h2><p>Join the Team-14 system</p>
+                    <h2>Create Account</h2><p>Join Attendance Management system</p>
                 </div>
-                <div class="desktop-header"><h2>Create Account</h2><p>Join the Team-14 KKM system</p></div>
+                <div class="desktop-header"><h2>Create Account</h2><p>Join the Attendance Management system</p></div>
                 <div class="form-card">
                     <form @submit.prevent="register">
                         <div class="field"><label>Full Name</label><div class="input-wrap"><svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg><input v-model="form.name" type="text" required autocomplete="name" placeholder="John Doe" /></div></div>

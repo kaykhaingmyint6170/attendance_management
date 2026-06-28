@@ -65,7 +65,7 @@
             <!-- Hero text -->
             <div class="hero">
                 <h1 class="hero-title">
-                    Attendance<br/>Management</span>
+                    Attendance<br/>Management
                 </h1>
                 <p class="hero-desc">
                     Track time, manage leaves, and stay connected — all in one place.
