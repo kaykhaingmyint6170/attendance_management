@@ -11,7 +11,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <h1 class="text-base font-bold text-gray-900 dark:text-gray-100 hidden sm:block">Employee Mgmt</h1>
+                        <h1 class="text-base font-bold text-gray-900 dark:text-gray-100 hidden sm:block">Staff Info</h1>
                     </div>
 
                     <!-- Desktop Nav Links -->
