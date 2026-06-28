@@ -64,12 +64,8 @@
 
             <!-- Hero text -->
             <div class="hero">
-                <div class="hero-badge">
-                    <span class="pulse" />
-                    Team-14 KKM
-                </div>
                 <h1 class="hero-title">
-                    Attendance<br/>Made <span class="hero-grad">Simple</span>
+                    Attendance<br/>Management</span>
                 </h1>
                 <p class="hero-desc">
                     Track time, manage leaves, and stay connected — all in one place.

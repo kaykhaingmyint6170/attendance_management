@@ -1,4 +1,4 @@
-Employee attendance & leave management system — Project Presentation (Team-14 Kay Khaing Myint)
+Employee attendance & leave management system — Project Presentation (Kay Khaing Myint)
 
 Short description
 -----------------
