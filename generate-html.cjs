@@ -7,8 +7,8 @@ const jsEntry = manifest['resources/js/app.js'];
 const cssEntries = jsEntry.css || [];
 const allCss = [manifest['resources/css/app.css'], ...cssEntries.map(f => ({ file: f }))].filter(Boolean);
 
-const cssLinks = allCss.map(c => `    <link rel="stylesheet" href="/build/${c.file}">`).join('\n');
-const scriptTag = `    <script type="module" src="/build/${jsEntry.file}"></script>`;
+const cssLinks = allCss.map(c => `    <link rel="stylesheet" href="/${c.file}">`).join('\n');
+const scriptTag = `    <script type="module" src="/${jsEntry.file}"></script>`;
 
 const html = `<!DOCTYPE html>
 <html lang="en">
