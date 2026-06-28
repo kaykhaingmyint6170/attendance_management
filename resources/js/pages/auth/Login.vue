@@ -47,7 +47,7 @@
                         <div class="tav tav-3">K</div>
                         <div class="tav tav-plus">+5</div>
                     </div>
-                    <span class="team-label">Team present today</span>
+                    <span class="team-label">Present today</span>
                 </div>
 
                 <!-- Floating stat mini-card -->

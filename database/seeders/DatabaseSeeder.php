@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         // Create Manager
         $manager = User::factory()->create([
-            'name' => 'Team Manager',
+            'name' => 'Manager',
             'email' => 'manager@company.com',
             'password' => bcrypt('password'),
             'role' => 'manager',
@@ -104,7 +104,7 @@ class DatabaseSeeder extends Seeder
                 'status' => $ld['status'],
                 'reason' => 'Leave request for ' . $ld['type'] . ' leave',
                 'handled_by' => $ld['status'] !== 'pending' ? $hr->id : null,
-                'admin_notes' => $ld['status'] === 'rejected' ? 'Insufficient team coverage during this period' : null,
+                'admin_notes' => $ld['status'] === 'rejected' ? 'Insufficient coverage during this period' : null,
             ]);
         }
 

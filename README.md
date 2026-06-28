@@ -46,7 +46,7 @@ An API-driven system for managing employee attendance (check-in/check-out, late 
 - **Role-based access** — hr, manager, employee roles with scoped views
 - **Attendance tracking** — check-in/check-out with automatic late detection
 - **Leave management** — submit, approve, and reject leave requests
-- **Dashboards** — role-specific summaries (pending approvals, team attendance, personal stats)
+- **Dashboards** — role-specific summaries (pending approvals,  attendance, personal stats)
 - **API-first** — all features exposed via REST API consumed by the SPA frontend
 
 ## Quick Start
