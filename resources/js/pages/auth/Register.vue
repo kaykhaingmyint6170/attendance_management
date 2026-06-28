@@ -15,7 +15,7 @@
             <div class="scene">
                 <div class="float-card card-form"><div class="form-bars"><div class="fbar w-90" /><div class="fbar w-65" /><div class="fbar w-75" /></div></div>
                 <div class="float-card card-badge-reg"><div class="badge-icon">&#10003;</div><span class="badge-text">Account created</span></div>
-                <div class="float-card card-team-reg"><div class="team-grid"><div class="tg tg-1">A</div><div class="tg tg-2">M</div><div class="tg tg-3">K</div><div class="tg tg-4">S</div><div class="tg tg-5">R</div><div class="tg tg-plus">+12</div></div><span class="team-label">Join your team</span></div>
+                <div class="float-card card-team-reg"><div class="team-grid"><div class="tg tg-1">A</div><div class="tg tg-2">M</div><div class="tg tg-3">K</div><div class="tg tg-4">S</div><div class="tg tg-5">R</div><div class="tg tg-plus">+12</div></div><span class="team-label"></span></div>
             </div>
             <div class="hero">
                 <h1 class="hero-title">
